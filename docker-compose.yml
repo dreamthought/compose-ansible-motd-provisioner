@@ -1,0 +1,26 @@
+version: '3.3'
+services:
+
+  # Master environment responsible for running provisioning
+  ansible-master:
+    build:
+      context: ./ansible-master
+      dockerfile: ./Dockerfile
+    depends_on:
+        - target-ssh-server
+    secrets:
+        - ssh_identity_password
+
+  # Environment to be provisioned
+  target-ssh-server:
+    build:
+      context: ./target-ssh-server
+      dockerfile: ./Dockerfile
+    ports:
+      - "4222:22"
+
+# Ideally we'd use encrypted docker secrets, HC Vault or some other hiding place
+secrets:
+  ssh_identity_password:
+    file: ./secrets/standin-for-secret-store.txt
+
