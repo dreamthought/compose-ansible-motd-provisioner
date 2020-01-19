@@ -1,0 +1,18 @@
+---
+# tasks file for motd-setup
+- name: Start Replacing motd
+  debug:
+    msg: Creating a new motd
+- name: About to write motd message to /etc/motd
+  copy:
+    dest: "/etc/motd"
+    content: "{{ motd_message }}"
+    mode: u=r,g=r,o=r
+- name: Removing motd scripts
+  debug:
+    msg: About to remove motd scripts
+- name: Remote default motd noise
+  file:
+    path: /etc/update-motd.d 
+    recurse: yes
+    mode: u-x,g-x,o-x

@@ -1,0 +1,10 @@
+galaxy_info:
+  author: Raf Gemmail
+  description: Role wrapping motd setup
+  company: 
+  license: MIT
+  min_ansible_version: 2.4
+  galaxy_tags: []
+
+dependencies: []
+  

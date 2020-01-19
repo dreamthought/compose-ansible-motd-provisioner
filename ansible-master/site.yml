@@ -7,7 +7,7 @@
         name: openssh-server
         state: present
   roles:
-      # - motd-setup
+    - motd-setup
       # - firewall
       # - ssh-harden
       # - motd-test
