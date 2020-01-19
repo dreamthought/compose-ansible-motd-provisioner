@@ -11,7 +11,7 @@ motd ansible module
 Role Variables
 --------------
 
-motd\_greeting - containing the message to display
+motd\_message - containing the message to display
 
 Dependencies
 ------------
