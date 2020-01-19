@@ -6,7 +6,9 @@
       apt:
         name: openssh-server
         state: present
+
   roles:
     - motd-setup
-    - ssh-harden
+    - name: ssh-harden
+      become: yes
       # - motd-test
