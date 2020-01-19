@@ -1,0 +1,40 @@
+# Base line setup for remote provisioning
+- hosts: baseline
+  become: yes
+  become_user: root
+  tasks:
+    - name: Install sshd
+      apt:
+        name: openssh-server
+        
+    - name: Start ssh Daemon
+      service:
+          name: ssh
+          state: started
+          enabled: yes
+
+    - name: Install sudo
+      apt:
+        name: sudo
+
+    - name: Setup ansible user
+      user:
+        name: ansible
+        comment: User used for remote provisioning
+        groups: sudo
+
+    - name: Allow ansible to become_user
+      copy:
+        dest: "/etc/sudoers.d/ansible"
+        content: "ansible     ALL=(ALL) NOPASSWD:ALL"
+        mode: u=r,g=r,o=r
+      
+    - name: Add management public-key to authorized keys
+      authorized_key:
+        user: ansible
+        key: '{{ item }}'
+        # For the sake of security let's make sure there is only one key in there
+        exclusive: True
+      with_file: 
+        - public-key/management-key.pub
+
