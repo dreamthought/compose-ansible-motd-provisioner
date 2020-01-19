@@ -18,6 +18,8 @@ services:
       dockerfile: ./Dockerfile
     ports:
       - "4222:22"
+    cap_add:
+      - NET_ADMIN
 
 # Ideally we'd use encrypted docker secrets, HC Vault or some other hiding place
 secrets:
