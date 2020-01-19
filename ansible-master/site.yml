@@ -1,0 +1,13 @@
+- hosts: sshservers
+  become: yes
+  become_user: root
+  tasks:
+    - name: Install sshd
+      apt:
+        name: openssh-server
+        state: present
+  roles:
+      # - motd-setup
+      # - firewall
+      # - ssh-harden
+      # - motd-test

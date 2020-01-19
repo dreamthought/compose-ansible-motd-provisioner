@@ -1,0 +1,4 @@
+# provided by docker secrets
+#ansible_ssh_pass: "{{ lookup('file', '/var/run/secrets/ssh_identity_password') }}" 
+ansible_ssh_pass: secret
+ansible_ssh_private_key_file: /opt/ansible-provisioner/keys/management-key-cert

@@ -1,0 +1,4 @@
+[sshservers]
+# The environment we'll provision
+target-ssh-server
+
