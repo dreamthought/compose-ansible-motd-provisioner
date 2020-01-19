@@ -11,4 +11,4 @@
     - motd-setup
     - name: ssh-harden
       become: yes
-      # - motd-test
+    - motd-test

@@ -1,2 +1,3 @@
 ---
 # defaults file for motd-setup
+motd_message: Message of the Day
