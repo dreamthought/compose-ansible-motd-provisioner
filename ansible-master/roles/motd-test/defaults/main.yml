@@ -1,0 +1,3 @@
+---
+# defaults file for motd-test
+motd_message: message of the day
